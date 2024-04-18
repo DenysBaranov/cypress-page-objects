@@ -8,16 +8,10 @@ describe("Tests item page elements", () => {
   beforeEach("Login on site", () => {
     cy.fixture("credentials-saucedemo.json").then((data) => {
       userData = data;
-    });
-    itemPage.open();
-    
-    itemPage.login(userData.username, userData.password);
+      itemPage.open();
+      itemPage.login(userData.username, userData.password);
+    }); 
   });
-
-  // it ('Login with correct login and password', () => {
-  //     itemPage.login(userData.username, userData.password);
-  //     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html');
-  // })
 
   it("Check the picture display, description, price and product name", () => {
     // cy.visit('https://www.saucedemo.com');
@@ -31,7 +25,7 @@ describe("Tests item page elements", () => {
     // cy.get('[data-test="inventory-item-price"]').should('be.visible');
     // cy.get('[data-test="inventory-item-name"]').should('be.visible');
 
-    itemPage.InventoryItemName.click();
+    itemPage.clickOnItemName(3);
     itemPage.itemImg.should("be.visible");
     itemPage.itemDesc.should("be.visible");
     itemPage.itemPrice.should("be.visible");
@@ -48,7 +42,7 @@ describe("Tests item page elements", () => {
     // cy.get('[data-test="add-to-cart"]').click();
     // cy.get('[data-test="remove"]').should('be.visible');
 
-    itemPage.InventoryItemName.click();
+    itemPage.clickOnItemName(4);
     itemPage.clickAddToCartButton();
     itemPage.removeButton.should("be.visible");
   });
@@ -64,7 +58,7 @@ describe("Tests item page elements", () => {
     // cy.get('[data-test="remove"]').click();
     // cy.get('[data-test="add-to-cart"]').should('be.visible');
 
-    itemPage.InventoryItemName.click();
+    itemPage.clickOnItemName(5);
     itemPage.clickAddToCartButton();
     itemPage.clickRemoveButton();
     itemPage.addToCartButton.should("be.visible");

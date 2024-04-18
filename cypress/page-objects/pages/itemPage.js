@@ -53,6 +53,10 @@ class itemPage extends basePage {
     this.loginButton.click();
   }
 
+  clickOnItemName(index) {
+    this.InventoryItemName.eq(index).click();
+  }
+
   clickAddToCartButton() {
     this.addToCartButton.click();
   }

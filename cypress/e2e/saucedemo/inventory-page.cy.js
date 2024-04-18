@@ -7,11 +7,9 @@ describe("Tests inventory page elements", () => {
   beforeEach(() => {
     cy.fixture("credentials-saucedemo.json").then((data) => {
       userData = data;
+      inventoryPage.open();
+      inventoryPage.login(userData.username, userData.password);
     });
-    inventoryPage.open();
-
-    inventoryPage.login(userData.username, userData.password);
-    
   });
 
   it("Checking the display of UI elements on page", () => {
