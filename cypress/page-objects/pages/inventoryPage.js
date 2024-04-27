@@ -1,20 +1,11 @@
 /// <reference types="cypress" />
 
-import basePage from "./basePage";
+import BasePage from "./BasePage";
+import LoginPage from "./LoginPage";
+import userData from "../../fixtures/userData.json";
 
-class inventoryPage extends basePage {
-  get userNameField() {
-    return cy.get('[data-test="username"]');
-  }
-
-  get passwordField() {
-    return cy.get('[data-test="password"]');
-  }
-
-  get loginButton() {
-    return cy.get('[data-test="login-button"]');
-  }
-
+class InventoryPage extends BasePage {
+ 
   get burgerButton() {
     return cy.get("#react-burger-menu-btn");
   }
@@ -45,12 +36,8 @@ class inventoryPage extends basePage {
 
   open() {
     super.open("");
-  }
-
-  login(username, password) {
-    this.userNameField.type(username);
-    this.passwordField.type(password);
-    this.loginButton.click();
+    LoginPage.login(userData.username, userData.password);
+    cy.url().should("eq", "https://www.saucedemo.com/inventory.html");
   }
 
   clickOnItem(index) {
@@ -58,4 +45,4 @@ class inventoryPage extends basePage {
   }
 }
 
-export default new inventoryPage();
+export default new InventoryPage();

@@ -1,66 +1,30 @@
 /// <reference types="cypress" />
 
-//import loginPage from "../../page-objects/pages/loginPage";
-import itemPage from "../../page-objects/pages/itemPage";
+import ItemPage from "../../page-objects/pages/ItemPage";
 
 describe("Tests item page elements", () => {
-  let userData;
   beforeEach("Login on site", () => {
-    cy.fixture("credentials-saucedemo.json").then((data) => {
-      userData = data;
-      itemPage.open();
-      itemPage.login(userData.username, userData.password);
+      ItemPage.open();
     }); 
-  });
 
   it("Check the picture display, description, price and product name", () => {
-    // cy.visit('https://www.saucedemo.com');
-    // cy.get('[data-test="username"]').type('standard_user');
-    // cy.get('[data-test="password"]').type('secret_sauce');
-    // cy.get('[data-test="login-button"]').click();
-    // cy.contains('Sauce').click();
-
-    // cy.get('.inventory_details_img').should('be.visible');
-    // cy.get('[data-test="inventory-item-desc"]').should('be.visible');
-    // cy.get('[data-test="inventory-item-price"]').should('be.visible');
-    // cy.get('[data-test="inventory-item-name"]').should('be.visible');
-
-    itemPage.clickOnItemName(3);
-    itemPage.itemImg.should("be.visible");
-    itemPage.itemDesc.should("be.visible");
-    itemPage.itemPrice.should("be.visible");
-    itemPage.itemName.should("be.visible");
+    ItemPage.clickOnItemNameByIndex(1);
+    ItemPage.itemImg.should("be.visible");
+    ItemPage.itemDesc.should("be.visible");
+    ItemPage.itemPrice.should("be.visible");
+    ItemPage.itemName.should("be.visible");
   });
 
   it("Check the display of the Remove button after clicking on the Add to cart button", () => {
-    // cy.visit('https://www.saucedemo.com');
-    // cy.get('[data-test="username"]').type('standard_user');
-    // cy.get('[data-test="password"]').type('secret_sauce');
-    // cy.get('[data-test="login-button"]').click();
-    // cy.contains('Sauce').click();
-
-    // cy.get('[data-test="add-to-cart"]').click();
-    // cy.get('[data-test="remove"]').should('be.visible');
-
-    itemPage.clickOnItemName(4);
-    itemPage.clickAddToCartButton();
-    itemPage.removeButton.should("be.visible");
+    ItemPage.clickOnItemNameByIndex(1);
+    ItemPage.clickAddToCartButton();
+    ItemPage.removeButton.should("be.visible");
   });
 
   it("Check the display of the Add to cart button after clicking on the Remove button", () => {
-    // cy.visit('https://www.saucedemo.com');
-    // cy.get('[data-test="username"]').type('standard_user');
-    // cy.get('[data-test="password"]').type('secret_sauce');
-    // cy.get('[data-test="login-button"]').click();
-    // cy.contains('Sauce').click();
-
-    // cy.get('[data-test="add-to-cart"]').click();
-    // cy.get('[data-test="remove"]').click();
-    // cy.get('[data-test="add-to-cart"]').should('be.visible');
-
-    itemPage.clickOnItemName(5);
-    itemPage.clickAddToCartButton();
-    itemPage.clickRemoveButton();
-    itemPage.addToCartButton.should("be.visible");
+    ItemPage.clickOnItemNameByIndex(1);
+    ItemPage.clickAddToCartButton();
+    ItemPage.clickRemoveButton();
+    ItemPage.addToCartButton.should("be.visible");
   });
 });

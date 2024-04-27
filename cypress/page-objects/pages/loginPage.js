@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-import basePage from "./basePage";
+import BasePage from "./BasePage";
 
-class loginPage extends basePage {
+class LoginPage extends BasePage {
   get userNameField() {
     return cy.get('[data-test="username"]');
   }
@@ -17,6 +17,7 @@ class loginPage extends basePage {
 
   open() {
     super.open("");
+  
   }
 
   login(username, password) {
@@ -26,4 +27,4 @@ class loginPage extends basePage {
   }
 }
 
-export default new loginPage();
+export default new LoginPage();

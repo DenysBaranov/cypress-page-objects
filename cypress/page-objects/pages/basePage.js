@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-export default class basePage {
+export default class BasePage {
   constructor() {
     this.baseUrl = "https://www.saucedemo.com/";
   }
